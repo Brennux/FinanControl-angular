@@ -1,0 +1,124 @@
+<header class="fixed top-0 left-0 right-0 z-50 shadow-sm bg-white dark:bg-gray-500">
+    <mat-toolbar class="!bg-white dark:!bg-gray-900 !border-b !border-gray-200 dark:!border-gray-800 !h-16">
+        <div class="flex items-center justify-between w-full px-6">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-shadow-gray-100">FinanControl</span>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="hidden lg:flex items-center gap-1 ml-8">
+                <button mat-button routerLink="/dashboard" routerLinkActive="active"
+                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    <span class="font-normal">Dashboards</span>
+                </button>
+                <button mat-button routerLink="/transacoes" routerLinkActive="active"
+                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    <span class="font-normal">Transações</span>
+                </button>
+                <button mat-button routerLink="/cadastros" routerLinkActive="active"
+                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    <span class="font-normal">Cadastros</span>
+                </button>
+            </nav>
+
+            <div class="flex-1"></div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2">
+
+                <!-- Search -->
+                <button mat-icon-button>
+                    <mat-icon class="!w-5 !h-5">search</mat-icon>
+                </button>
+
+                <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+                    <mat-icon [matBadge]="notifications.length" matBadgeColor="warn" matBadgeSize="small"
+                        class="!w-5 !h-5">notifications</mat-icon>
+                </button>
+
+                <button mat-icon-button [matMenuTriggerFor]="userMenu" class="ml-1">
+                    <img src="https://ui-avatars.com/api/?name=Brian+Hughes&background=6366F1&color=fff&bold=true"
+                        alt="User" class="w-8 h-8 rounded-full" />
+                </button>
+
+            </div>
+        </div>
+    </mat-toolbar>
+</header>
+
+<!-- Notifications Menu -->
+<mat-menu #notificationsMenu="matMenu" class="mt-2" xPosition="before">
+    <div class="w-80 max-h-96 overflow-y-auto">
+        <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+            <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">Notificações</h3>
+                <span
+                    class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full">
+                    {{ notifications.length }} novas
+                </span>
+            </div>
+        </div>
+
+        @for (notification of notifications; track $index) {
+        <button mat-menu-item
+            class="h-auto py-3 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
+            <div class="flex items-start gap-3 w-full">
+                <div class="bg-indigo-100 dark:bg-indigo-900 p-2 rounded-lg">
+                    <mat-icon
+                        class="text-indigo-600 dark:text-indigo-400 !w-5 !h-5 !text-base">notifications_active</mat-icon>
+                </div>
+                <div class="flex flex-col gap-1 flex-1 min-w-0">
+                    <span class="font-medium text-gray-900 dark:text-gray-100 text-sm">{{ notification.title }}</span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400 truncate">{{ notification.description
+                        }}</span>
+                    <span class="text-xs text-gray-400 dark:text-gray-500">{{ notification.time }}</span>
+                </div>
+            </div>
+        </button>
+        }
+
+        <div class="p-3 text-center border-t border-gray-200 dark:border-gray-700">
+            <button mat-button class="text-indigo-600 dark:text-indigo-400 text-sm font-medium">
+                Ver todas as notificações
+            </button>
+        </div>
+    </div>
+</mat-menu>
+
+<!-- User Menu -->
+<mat-menu #userMenu="matMenu" class="mt-2" xPosition="before">
+    <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center gap-3">
+            <img src="https://ui-avatars.com/api/?name=Usuario&background=6366F1&color=fff&bold=true" alt="User"
+                class="w-12 h-12 rounded-full" />
+            <div class="flex flex-col">
+                <span class="font-semibold text-gray-900 dark:text-gray-100">Usuário</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">usuario&#64;email.com</span>
+            </div>
+        </div>
+    </div>
+
+    <button mat-menu-item class="gap-3">
+        <mat-icon class="text-gray-600 dark:text-gray-400">person</mat-icon>
+        <span>Meu Perfil</span>
+    </button>
+
+    <button mat-menu-item class="gap-3">
+        <mat-icon class="text-gray-600 dark:text-gray-400">settings</mat-icon>
+        <span>Configurações</span>
+    </button>
+
+    <button mat-menu-item class="gap-3">
+        <mat-icon class="text-gray-600 dark:text-gray-400">help</mat-icon>
+        <span>Ajuda</span>
+    </button>
+
+    <mat-divider class="my-2"></mat-divider>
+
+    <button mat-menu-item class="gap-3 text-red-600 dark:text-red-400">
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+    </button>
+</mat-menu>

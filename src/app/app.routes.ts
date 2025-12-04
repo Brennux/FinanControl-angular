@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { LoginTeste } from './components/login-teste/login-teste';
-import { Home } from './components/home/home';
-import { AuthGuard } from './service/auth.guard';
-
 export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginTeste },
-    { path: 'home', component: Home, canActivate: [AuthGuard] },
-    {
-        path: 'cadastro',
-        loadComponent: () => import('./components/formulario-teste/formulario-teste').then(m => m.FormularioTeste)
+    {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+
+    {path: 'dashboard',
+        loadComponent: () => import('./components/dashboard/dashboard').then(m => m.Dashboard)
     },
-    { path: '**', redirectTo: '/login' }
+
+    {path: 'transacoes',
+        loadComponent: () => import('./components/transacoes/transacoes').then(m => m.Transacoes)
+    },
+    {path: 'cadastros',
+        loadComponent: () => import('./components/cadastros/cadastros').then(m => m.Cadastros)
+    }
 ];
