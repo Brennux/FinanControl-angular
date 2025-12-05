@@ -1,24 +1,24 @@
-<header class="fixed top-0 left-0 right-0 z-50 shadow-sm bg-white dark:bg-gray-500">
-    <mat-toolbar class="!bg-white dark:!bg-gray-900 !border-b !border-gray-200 dark:!border-gray-800 !h-16">
+<header class="fixed top-0 left-0 right-0 z-50 shadow-sm bg-teal-700">
+    <mat-toolbar class="!bg-teal-700 !border-b !border-teal-800 !h-16">
         <div class="flex items-center justify-between w-full px-6">
 
             <!-- Logo -->
             <div class="flex items-center gap-2">
-                <span class="font-bold text-shadow-gray-100">FinanControl</span>
+                <span class="font-bold text-white">FinanControl</span>
             </div>
 
             <!-- Navigation Menu -->
             <nav class="hidden lg:flex items-center gap-1 ml-8">
                 <button mat-button routerLink="/dashboard" routerLinkActive="active"
-                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    class="!text-white hover:!bg-teal-600 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
                     <span class="font-normal">Dashboards</span>
                 </button>
                 <button mat-button routerLink="/transacoes" routerLinkActive="active"
-                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    class="!text-white hover:!bg-teal-600 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
                     <span class="font-normal">Transações</span>
                 </button>
                 <button mat-button routerLink="/cadastros" routerLinkActive="active"
-                    class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-800 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
+                    class="!text-white hover:!bg-teal-600 !px-4 !py-2 !h-auto !flex !items-center !gap-1 !rounded-none">
                     <span class="font-normal">Cadastros</span>
                 </button>
             </nav>
@@ -26,20 +26,22 @@
             <div class="flex-1"></div>
 
             <!-- Right Actions -->
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1">
 
                 <!-- Search -->
-                <button mat-icon-button>
+                <button mat-icon-button class="!text-white hover:!bg-teal-600 !flex !items-center !justify-center">
                     <mat-icon class="!w-5 !h-5">search</mat-icon>
                 </button>
 
-                <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+                <button mat-icon-button [matMenuTriggerFor]="notificationsMenu"
+                    class="!text-white hover:!bg-teal-600 !flex !items-center !justify-center">
                     <mat-icon [matBadge]="notifications.length" matBadgeColor="warn" matBadgeSize="small"
                         class="!w-5 !h-5">notifications</mat-icon>
                 </button>
 
-                <button mat-icon-button [matMenuTriggerFor]="userMenu" class="ml-1">
-                    <img src="https://ui-avatars.com/api/?name=Brian+Hughes&background=6366F1&color=fff&bold=true"
+                <button mat-icon-button [matMenuTriggerFor]="userMenu"
+                    class="ml-1 hover:!bg-teal-600 !flex !items-center !justify-center">
+                    <img src="https://ui-avatars.com/api/?name=Brian+Hughes&background=14B8A6&color=fff&bold=true"
                         alt="User" class="w-8 h-8 rounded-full" />
                 </button>
 

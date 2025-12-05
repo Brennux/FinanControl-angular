@@ -1,0 +1,17 @@
+// Tema customizado com cores Teal
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Definir paletas de cores
+$my-primary: mat.m2-define-palette(mat.$m2-teal-palette, 700);
+$my-accent: mat.m2-define-palette(mat.$m2-teal-palette, 500);
+$my-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Criar tema
+$my-theme: mat.m2-define-light-theme((color: (primary: $my-primary,
+        accent: $my-accent,
+        warn: $my-warn,
+      )));
+
+@include mat.all-component-themes($my-theme);

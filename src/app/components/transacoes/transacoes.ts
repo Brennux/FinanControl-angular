@@ -49,6 +49,7 @@ export class Transacoes {
       tipo: 'transferencia',
       descricao: 'Saldo Inicial',
       valor: 0,
+      categoria: 'supermercado',
       conta: 'Nubank',
       status: 'confirmada'
     }
