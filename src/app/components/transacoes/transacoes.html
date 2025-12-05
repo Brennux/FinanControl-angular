@@ -17,10 +17,6 @@
                 <button mat-icon-button class="!rounded-none hover:!bg-gray-100 dark:hover:!bg-gray-700">
                     <mat-icon>print</mat-icon>
                 </button>
-
-                <button mat-icon-button class="!rounded-none hover:!bg-gray-100 dark:hover:!bg-gray-700">
-                    <mat-icon>grid_view</mat-icon>
-                </button>
             </div>
 
             <div class="flex items-center gap-3">
@@ -29,15 +25,12 @@
                     <input matInput placeholder="Pesquisar">
                 </mat-form-field>
 
-                <button mat-icon-button class="!rounded-none hover:!bg-gray-100 dark:hover:!bg-gray-700">
-                    <mat-icon>filter_list</mat-icon>
-                </button>
             </div>
         </div>
 
         <!-- Filtros e Navegação de Mês -->
-        <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4">
                 <mat-form-field appearance="outline" class="!w-48 !mb-0">
                     <mat-select [(value)]="contaSelecionada">
                         <mat-option value="todas">Conta ou Cartão</mat-option>
@@ -81,46 +74,46 @@
         <!-- Abas de Filtro -->
         <div class="flex items-center gap-4 mb-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-2">
             <button mat-button (click)="filtroSelecionado = 'todos'"
-                [class.!bg-gray-100]="filtroSelecionado === 'todos'"
-                class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700 !rounded-md !gap-2">
+                [class.!bg-green-600]="filtroSelecionado === 'todos'"
+                class="!text-white dark:!text-white hover:!bg-green-600 dark:hover:!bg-green-600 !rounded-md !gap-2">
                 <mat-icon>calendar_today</mat-icon>
                 <span>Todos</span>
             </button>
 
             <button mat-button (click)="filtroSelecionado = 'receitas'"
-                [class.!bg-gray-100]="filtroSelecionado === 'receitas'"
-                class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700 !rounded-md !gap-2">
+                [class.!bg-green-600]="filtroSelecionado === 'receitas'"
+                class="!text-white dark:!text-white hover:!bg-green-600 dark:hover:!bg-green-600 !rounded-md !gap-2">
                 <mat-icon class="text-green-600 dark:text-green-400">arrow_downward</mat-icon>
                 <span>Receitas</span>
             </button>
 
             <button mat-button (click)="filtroSelecionado = 'despesas'"
-                [class.!bg-gray-100]="filtroSelecionado === 'despesas'"
-                class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700 !rounded-md !gap-2">
+                [class.!bg-green-600]="filtroSelecionado === 'despesas'"
+                class="!text-white dark:!text-white hover:!bg-green-600 dark:hover:!bg-green-600 !rounded-md !gap-2">
                 <mat-icon class="text-red-600 dark:text-red-400">arrow_upward</mat-icon>
                 <span>Despesas</span>
             </button>
 
             <button mat-button (click)="filtroSelecionado = 'transferencias'"
-                [class.!bg-gray-100]="filtroSelecionado === 'transferencias'"
-                class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700 !rounded-md !gap-2">
+                [class.!bg-green-600]="filtroSelecionado === 'transferencias'"
+                class="!text-white dark:!text-white hover:!bg-green-600 dark:hover:!bg-green-600 !rounded-md !gap-2">
                 <mat-icon class="text-blue-600 dark:text-blue-400">sync_alt</mat-icon>
                 <span>Transferências</span>
             </button>
 
             <button mat-button (click)="filtroSelecionado = 'recorrentes'"
-                [class.!bg-gray-100]="filtroSelecionado === 'recorrentes'"
-                class="!text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700 !rounded-md !gap-2">
+                [class.!bg-green-600]="filtroSelecionado === 'recorrentes'"
+                class="!text-white dark:!text-white hover:!bg-green-600 dark:hover:!bg-green-600 !rounded-md !gap-2">
                 <mat-icon class="text-purple-600 dark:text-purple-400">autorenew</mat-icon>
                 <span>Recorrentes</span>
             </button>
         </div>
 
         <!-- Saldo Anterior -->
-        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg shadow-sm p-4 mb-2 flex items-center justify-between">
-            <span class="text-gray-700 dark:text-gray-300 font-medium">Saldo Anterior <span
-                    class="text-gray-500 text-sm">Todos</span></span>
-            <span class="text-gray-900 dark:text-gray-100 font-semibold">{{ formatarValor(saldoAnterior) }}</span>
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg shadow-sm p-4 mb-2 flex items-center justify-between">
+            <span class="text-green-700 dark:text-green-300 font-medium">Saldo Anterior <span
+                    class="text-green-600 dark:text-green-400 text-sm">Todos</span></span>
+            <span class="text-green-900 dark:text-green-100 font-semibold">{{ formatarValor(saldoAnterior) }}</span>
         </div>
 
         <!-- Tabela de Transações -->
@@ -221,15 +214,15 @@
         </div>
 
         <!-- Saldo Atual -->
-        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg shadow-sm p-4 mt-2 flex items-center justify-between">
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg shadow-sm p-4 mt-2 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <span class="text-gray-700 dark:text-gray-300 font-medium">Saldo Atual</span>
-                <mat-icon class="!w-5 !h-5 text-gray-500">visibility</mat-icon>
+                <span class="text-green-700 dark:text-green-300 font-medium">Saldo Atual</span>
+                <mat-icon class="!w-5 !h-5 text-green-600 dark:text-green-400">visibility</mat-icon>
             </div>
-            <button mat-icon-button class="!rounded-none hover:!bg-yellow-100 dark:hover:!bg-yellow-900/40">
-                <mat-icon>expand_more</mat-icon>
+            <button mat-icon-button class="!rounded-none hover:!bg-green-100 dark:hover:!bg-green-900/40">
+                <mat-icon class="text-green-600 dark:text-green-400">expand_more</mat-icon>
             </button>
-            <span class="text-gray-900 dark:text-gray-100 font-bold text-lg">{{ formatarValor(saldoAtual) }}</span>
+            <span class="text-green-900 dark:text-green-100 font-bold text-lg">{{ formatarValor(saldoAtual) }}</span>
         </div>
 
     </div>
