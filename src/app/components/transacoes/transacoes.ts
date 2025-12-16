@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TransacaoDialog } from './transacao-dialog/transacao-dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 interface Transacao {
   id: number;
@@ -33,7 +35,8 @@ interface Transacao {
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
   ],
   templateUrl: './transacoes.html',
 })
@@ -41,6 +44,7 @@ export class Transacoes {
   mesAtual = new Date();
   filtroSelecionado = 'todos';
   contaSelecionada = 'todas';
+  private dialog = inject(MatDialog);
 
   transacoes: Transacao[] = [
     {
@@ -124,14 +128,40 @@ export class Transacoes {
   }
 
   adicionarTransacao() {
-    console.log('Adicionar nova transação');
+    const dialogRef = this.dialog.open(TransacaoDialog, {
+      width: '600px',
+      data: null
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        result.id = this.transacoes.length + 1;
+        this.transacoes.push(result);
+      }
+    });
   }
 
   editarTransacao(transacao: Transacao) {
-    console.log('Editar transação', transacao);
+    const dialogRef = this.dialog.open(TransacaoDialog, {
+      width: '600px',
+      data: transacao
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.transacoes.findIndex(t => t.id === transacao.id);
+        if (index !== -1) {
+          this.transacoes[index] = result;
+        }
+      }
+    });
   }
 
   excluirTransacao(transacao: Transacao) {
-    console.log('Excluir transação', transacao);
+    const index = this.transacoes.findIndex(t => t.id === transacao.id);
+    if (index !== -1) {
+      this.transacoes.splice(index, 1);
+    }
   }
+
 }

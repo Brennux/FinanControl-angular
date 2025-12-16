@@ -1,0 +1,98 @@
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-6 text-gray-900">
+        {{ data ? 'Editar Transação' : 'Nova Transação' }}
+    </h2>
+
+    <form class="space-y-4">
+        <!-- Tipo -->
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="transacao.tipo" name="tipo" required>
+                <mat-option value="receita">
+                    <span class="flex items-center gap-2">
+                        <mat-icon class="text-green-600">arrow_downward</mat-icon>
+                        Receita
+                    </span>
+                </mat-option>
+                <mat-option value="despesa">
+                    <span class="flex items-center gap-2">
+                        <mat-icon class="text-red-600">arrow_upward</mat-icon>
+                        Despesa
+                    </span>
+                </mat-option>
+                <mat-option value="transferencia">
+                    <span class="flex items-center gap-2">
+                        <mat-icon class="text-blue-600">sync_alt</mat-icon>
+                        Transferência
+                    </span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Descrição -->
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Descrição</mat-label>
+            <input matInput [(ngModel)]="transacao.descricao" name="descricao" required>
+        </mat-form-field>
+
+        <!-- Data e Valor -->
+        <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Data</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="transacao.data" name="data" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Valor</mat-label>
+                <input matInput type="number" [(ngModel)]="transacao.valor" name="valor" required>
+                <span matPrefix>R$&nbsp;</span>
+            </mat-form-field>
+        </div>
+
+        <!-- Conta e Categoria -->
+        <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Conta</mat-label>
+                <mat-select [(ngModel)]="transacao.conta" name="conta" required>
+                    <mat-option value="Nubank">Nubank</mat-option>
+                    <mat-option value="Itaú">Itaú</mat-option>
+                    <mat-option value="Bradesco">Bradesco</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Categoria</mat-label>
+                <mat-select [(ngModel)]="transacao.categoria" name="categoria">
+                    <mat-option value="supermercado">Supermercado</mat-option>
+                    <mat-option value="alimentacao">Alimentação</mat-option>
+                    <mat-option value="transporte">Transporte</mat-option>
+                    <mat-option value="saude">Saúde</mat-option>
+                    <mat-option value="lazer">Lazer</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- Status -->
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="transacao.status" name="status" required>
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="confirmada">Confirmada</mat-option>
+                <mat-option value="recorrente">Recorrente</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Botões -->
+        <div class="flex justify-end gap-3 mt-6">
+            <button mat-button (click)="onCancel()" type="button">
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" (click)="onSave()" type="button"
+                class="!bg-teal-600 !text-white hover:!bg-teal-700">
+                {{ data ? 'Salvar' : 'Adicionar' }}
+            </button>
+        </div>
+    </form>
+</div>
